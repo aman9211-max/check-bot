@@ -30,7 +30,7 @@ mouseMove = function (event) {
       console.log(checkIsLine());
     }
     count++;
-    count %= 100;
+    count %= 10;
 };
 document.onmousemove = mouseMove;
 console.log(checkIsLine());
