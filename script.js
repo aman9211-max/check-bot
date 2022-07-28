@@ -20,6 +20,10 @@ mouseMove = function (event) {
 
     let obj = [event.pageX, event.pageY];
     points.push(obj);
+
+    if(points.length > 20) {
+      points.splice(0,points.length - 20);
+    }
   }
   // console.log(points)
     if(count == 0) {
