@@ -2,7 +2,7 @@ points = [];
 var count = 0;
 let values = document.getElementById("values");
 mouseMove = function (event) {
-  var eventDoc, doc, body;
+  var dot, eventDoc, doc, body;
   event = event || window.event; // IE-ism
   if (event.pageX != null && event.clientX != null) {
     eventDoc = (event.target && event.target.ownerDocument) || document;
@@ -25,6 +25,11 @@ mouseMove = function (event) {
       points.splice(0,points.length - 20);
     }
   }
+  dot = document.createElement('div');
+      dot.className = "dot";
+      dot.style.left = event.pageX + "px";
+      dot.style.top = event.pageY + "px";
+      document.body.appendChild(dot);
   // console.log(points)
     if(count == 0) {
       let p = checkIsLine();
