@@ -1,10 +1,11 @@
 points = [];
-var count = 0;
 let values = document.getElementById("values");
 
-
-
+let temp1 = 0, temp2;
+let count1 = 0;
+let count2 = 0;
 mouseMove = function (event) {
+  count2++;
   var dot, eventDoc, doc, body;
   event = event || window.event; // IE-ism
   if (event.pageX != null && event.clientX != null) {
@@ -22,17 +23,34 @@ mouseMove = function (event) {
       ((doc && doc.clientTop) || (body && body.clientTop) || 0);
 
     let obj = [event.pageX, event.pageY];
+
+
+    
     if(points.length > 0) {
-    let distance = Math.sqrt(Math.abs(points[points.length - 1][0] - obj[0]) * Math.abs(points[points.length - 1][0] - obj[0])  +  Math.abs(points[points.length - 1][1] - obj[1]) * Math.abs(points[points.length - 1][1] - obj[1]));
+      temp2 = Date.now();
+      let time = (temp2 - temp1);
 
 
-    if(distance  > Math.sqrt(200)) {
+      let distance = Math.sqrt(Math.abs(points[points.length - 1][0] - obj[0]) * Math.abs(points[points.length - 1][0] - obj[0])  +  Math.abs(points[points.length - 1][1] - obj[1]) * Math.abs(points[points.length - 1][1] - obj[1]));
+      let speed = distance / time;
+      // console.log("time", time);
+      console.log("speed", speed);
+      // console.log(Date.now());
+      // console.log("temp1", temp1);
+      // console.log("temp2", temp2);
+
+    if(speed > 5 && distance > Math.sqrt(200)) {
       // let p = checkIsLine();
+
+      // console.log("distance",distance, obj, points[points.length - 1]);
       var z = document.createElement("li"); // is a node
-      z.innerHTML = "TRUE";
+      z.innerHTML = "BOT";
       values.appendChild(z);
+      count1++;
     }
+
   }
+  temp1 = Date.now();
 
     points.push(obj);
 
@@ -46,15 +64,16 @@ mouseMove = function (event) {
       dot.style.top = event.pageY + "px";
       document.body.appendChild(dot);
   // console.log(points)
-    if(count == 0) {
       let p = checkIsLine();
       var z = document.createElement("li"); // is a node
-      z.innerHTML = `${p}`;
+      if(p) {
+        z.innerHTML = "BOT";
+      }
+      else 
+      z.innerHTML = "HUMAN";
       values.appendChild(z);
-      console.log(checkIsLine());
-    }
-    count++;
-    count %= 10;
+      // console.log(checkIsLine());
+    
 };
 document.onmousemove = mouseMove;
 console.log(checkIsLine());
