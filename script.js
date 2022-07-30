@@ -23,10 +23,10 @@ mouseMove = function (event) {
 
     let obj = [event.pageX, event.pageY];
 
-    let distance = sqrt(abs(points[points.length - 1][0] - obj[0]) *abs(points[points.length - 1][0] - obj[0])  +  abs(points[points.length - 1][1] - obj[1]) *abs(points[points.length - 1][1] - obj[1]));
+    let distance = Math.sqrt(Math.abs(points[points.length - 1][0] - obj[0]) * Math.abs(points[points.length - 1][0] - obj[0])  +  Math.abs(points[points.length - 1][1] - obj[1]) * Math.abs(points[points.length - 1][1] - obj[1]));
 
 
-    if(distance  > sqrt(200)) {
+    if(distance  > Math.sqrt(200)) {
       // let p = checkIsLine();
       var z = document.createElement("li"); // is a node
       z.innerHTML = "TRUE";
