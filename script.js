@@ -1,6 +1,9 @@
 points = [];
 var count = 0;
 let values = document.getElementById("values");
+
+
+
 mouseMove = function (event) {
   var dot, eventDoc, doc, body;
   event = event || window.event; // IE-ism
@@ -19,6 +22,17 @@ mouseMove = function (event) {
       ((doc && doc.clientTop) || (body && body.clientTop) || 0);
 
     let obj = [event.pageX, event.pageY];
+
+    let distance = sqrt(abs(points[points.length - 1][0] - obj[0]) *abs(points[points.length - 1][0] - obj[0])  +  abs(points[points.length - 1][1] - obj[1]) *abs(points[points.length - 1][1] - obj[1]));
+
+
+    if(distance  > sqrt(200)) {
+      // let p = checkIsLine();
+      var z = document.createElement("li"); // is a node
+      z.innerHTML = "TRUE";
+      values.appendChild(z);
+    }
+
     points.push(obj);
 
     if(points.length > 20) {
