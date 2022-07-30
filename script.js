@@ -22,7 +22,7 @@ mouseMove = function (event) {
       ((doc && doc.clientTop) || (body && body.clientTop) || 0);
 
     let obj = [event.pageX, event.pageY];
-
+    if(points.length > 0) {
     let distance = Math.sqrt(Math.abs(points[points.length - 1][0] - obj[0]) * Math.abs(points[points.length - 1][0] - obj[0])  +  Math.abs(points[points.length - 1][1] - obj[1]) * Math.abs(points[points.length - 1][1] - obj[1]));
 
 
@@ -32,6 +32,7 @@ mouseMove = function (event) {
       z.innerHTML = "TRUE";
       values.appendChild(z);
     }
+  }
 
     points.push(obj);
 
