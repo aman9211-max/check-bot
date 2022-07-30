@@ -35,11 +35,15 @@ mouseMove = function (event) {
       let speed = distance / time;
       // console.log("time", time);
       console.log("speed", speed);
+      var z = document.createElement("li"); // is a node
+      z.innerHTML = `${speed}`;
+      values.appendChild(z);
       // console.log(Date.now());
       // console.log("temp1", temp1);
       // console.log("temp2", temp2);
 
     if(speed > 5 && distance > Math.sqrt(200)) {
+
       // let p = checkIsLine();
 
       // console.log("distance",distance, obj, points[points.length - 1]);
