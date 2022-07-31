@@ -27,8 +27,13 @@ mouseMove = function (event) {
 
     
     if(points.length > 0) {
+
+      //time bw the current position and most recent position of the cursor
       let time = (Date.now() - temp1);
+
+      //distance bw the current position and most recent position of the cursor
       let distance = Math.sqrt(Math.abs(points[points.length - 1][0] - obj[0]) * Math.abs(points[points.length - 1][0] - obj[0])  +  Math.abs(points[points.length - 1][1] - obj[1]) * Math.abs(points[points.length - 1][1] - obj[1]));
+      //speed of the cursor at an instant
       let speed = distance / time;
       
 
@@ -40,6 +45,7 @@ mouseMove = function (event) {
     }
     else
     {
+      //if condition is not satisfied then we will say the user is human
       var z = document.createElement("li"); // is a node
       z.innerHTML = "HUMAN";
       values.appendChild(z);
